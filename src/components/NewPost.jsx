@@ -14,6 +14,10 @@ function NewPost(props) {
         <label htmlFor="name">Your name</label>
         <input type="text" id="name" required onChange={props.onAuthorChange}/>
       </p>
+      <p className={classes.actions}> {/*remember classes here are css not react classes*/}
+        <button>Cancel</button>  {/*note, buttons will trigger a submit event and HTTP request by default */}
+        <button>Submit</button> 
+      </p>
     </form>
   );
 }
