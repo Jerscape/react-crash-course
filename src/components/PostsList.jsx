@@ -6,6 +6,7 @@ import { useState } from "react";
 
 function PostsList({ isPosting, onStopPosting }) {
   const [posts, setPosts] = useState([]);
+  
 
   function addPostHandler(postData) {
     setPosts((existingPosts) => [postData, ...existingPosts]);
@@ -23,10 +24,17 @@ function PostsList({ isPosting, onStopPosting }) {
           />
         </Modal>
       )}
+      {posts.length > 0 && (
+        <ul className={classes.posts}>
+          {posts.map((post) => (
+            <Post key={post.body} author={post.author} body={post.body} />
 
-      <ul className={classes.posts}>
-        <Post author="Manuel" body="Check out the full course!" />
-      </ul>
+          ))}
+        </ul>
+      )}
+      {posts.length === 0 && (
+        <div style={{texAlign: 'center', color: 'white' }}>There are no posts yet</div>
+      )}
     </>
   );
 }
